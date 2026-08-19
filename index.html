@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mental Health Score Prediction | AI Dashboard</title>
+
+<!-- Google Fonts: Sora for display, Inter for body/data -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="light-theme">
+
+  <!-- ============ ANIMATED BACKGROUND ============ -->
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="aurora-blob blob-blue"></div>
+    <div class="aurora-blob blob-purple"></div>
+    <div class="aurora-blob blob-cyan"></div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <circle cx="13" cy="13" r="11" stroke="url(#navGrad)" stroke-width="2"/>
+            <circle cx="13" cy="13" r="3.2" fill="url(#navGrad)"/>
+            <path d="M13 2v4M13 20v4M2 13h4M20 13h4" stroke="url(#navGrad)" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="navGrad" x1="0" y1="0" x2="26" y2="26">
+                <stop offset="0%" stop-color="#5B8DFF"/>
+                <stop offset="55%" stop-color="#9B6BFF"/>
+                <stop offset="100%" stop-color="#31E1E8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand-name">Mindscope<span class="brand-name-accent">AI</span></span>
+      </div>
+
+      <nav class="navbar-links" id="navbarLinks">
+        <a href="#hero">Overview</a>
+        <a href="#predict-card">Assessment</a>
+        <a href="#result-section">Results</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4.5"/>
+            <path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8" stroke-linecap="round"/>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+          </svg>
+        </button>
+        <button class="navbar-burger" id="navBurger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-copy fade-in-up">
+          <p class="eyebrow">Signal, not diagnosis — a data portrait of digital habits</p>
+          <h1 class="hero-title">
+            Mental Health Score <span class="grad-text">Prediction</span>
+          </h1>
+          <p class="hero-subtitle">
+            Predict a student's mental health score using machine learning — trained on real study, sleep,
+            and social‑media usage patterns.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#predict-card" class="btn-primary btn-glow">
+              Start Assessment
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <span class="hero-meta">
+              <span class="pulse-dot"></span> Model status: connected to <code>localhost:2200</code>
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-art fade-in-up" style="animation-delay:.15s">
+          <!-- AI / neural-brain illustration, pure SVG -->
+          <svg viewBox="0 0 420 420" width="100%" height="100%" role="img" aria-label="Illustration of a neural network overlaying a human head silhouette">
+            <defs>
+              <linearGradient id="brainGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#5B8DFF"/>
+                <stop offset="50%" stop-color="#9B6BFF"/>
+                <stop offset="100%" stop-color="#31E1E8"/>
+              </linearGradient>
+              <radialGradient id="haloGrad" cx="50%" cy="42%" r="60%">
+                <stop offset="0%" stop-color="#9B6BFF" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#9B6BFF" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <circle cx="210" cy="190" r="170" fill="url(#haloGrad)"/>
+
+            <!-- head silhouette -->
+            <path class="brain-path" d="M210 60c58 0 100 46 100 104 0 34-12 55-12 78 0 20 14 30 14 48
+                     0 22-20 34-46 34h-18c-10 16-30 22-38 22s-28-6-38-22h-14
+                     c-30 0-52-16-52-42 0-16 10-26 10-44 0-58 -6-72-6-96 0-54 42-82 100-82z"
+                  fill="none" stroke="url(#brainGrad)" stroke-width="2.5" opacity="0.85"/>
+
+            <!-- neural network nodes/edges -->
+            <g id="neuralNet" stroke="url(#brainGrad)" stroke-width="1.4" opacity="0.9">
+              <line x1="140" y1="150" x2="200" y2="120"/>
+              <line x1="140" y1="150" x2="190" y2="190"/>
+              <line x1="200" y1="120" x2="260" y2="140"/>
+              <line x1="200" y1="120" x2="190" y2="190"/>
+              <line x1="260" y1="140" x2="270" y2="200"/>
+              <line x1="190" y1="190" x2="270" y2="200"/>
+              <line x1="190" y1="190" x2="150" y2="230"/>
+              <line x1="270" y1="200" x2="230" y2="250"/>
+              <line x1="150" y1="230" x2="230" y2="250"/>
+              <line x1="150" y1="230" x2="180" y2="280"/>
+              <line x1="230" y1="250" x2="180" y2="280"/>
+            </g>
+            <g id="neuralDots" fill="#EAF0FF">
+              <circle cx="140" cy="150" r="4.5"/>
+              <circle cx="200" cy="120" r="5.5"/>
+              <circle cx="260" cy="140" r="4"/>
+              <circle cx="190" cy="190" r="6.5"/>
+              <circle cx="270" cy="200" r="4.5"/>
+              <circle cx="150" cy="230" r="5"/>
+              <circle cx="230" cy="250" r="5.5"/>
+              <circle cx="180" cy="280" r="4.5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ============ ASSESSMENT / FORM ============ -->
+    <section class="predict-section" id="predict-card">
+      <div class="glass-card form-card fade-in-up">
+        <div class="card-header">
+          <h2>Student Assessment</h2>
+          <p>Fill in the details below — every field feeds the prediction model.</p>
+        </div>
+
+        <form id="predictForm" novalidate>
+          <div class="form-grid">
+
+            <!-- Age -->
+            <div class="field floating-field">
+              <input type="number" id="age" name="age" placeholder=" " min="10" max="100" required />
+              <label for="age">Age</label>
+              <span class="field-hint">10 – 100 years</span>
+              <span class="field-error" data-for="age"></span>
+            </div>
+
+            <!-- Gender -->
+            <div class="field floating-field">
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected hidden></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <label for="gender">Gender</label>
+              <span class="field-error" data-for="gender"></span>
+            </div>
+
+            <!-- Country (searchable) -->
+            <div class="field floating-field searchable" id="countryField">
+              <input type="text" id="countrySearch" name="countrySearch" placeholder=" " autocomplete="off" required />
+              <input type="hidden" id="country" name="country" />
+              <label for="countrySearch">Country</label>
+              <span class="field-hint">Start typing to search</span>
+              <ul class="dropdown-list" id="countryDropdown" role="listbox"></ul>
+              <span class="field-error" data-for="country"></span>
+            </div>
+
+            <!-- Academic Level -->
+            <div class="field floating-field">
+              <select id="academic_level" name="academic_level" required>
+                <option value="" disabled selected hidden></option>
+                <option value="High School">High School</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+              </select>
+              <label for="academic_level">Academic Level</label>
+              <span class="field-error" data-for="academic_level"></span>
+            </div>
+
+            <!-- Most Used Platform -->
+            <div class="field floating-field">
+              <select id="most_used_platform" name="most_used_platform" required>
+                <option value="" disabled selected hidden></option>
+                <option value="Facebook">Facebook</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Snapchat">Snapchat</option>
+                <option value="Twitter">Twitter</option>
+                <option value="YouTube">YouTube</option>
+                <option value="TikTok">TikTok</option>
+                <option value="LINE">LINE</option>
+                <option value="KakaoTalk">KakaoTalk</option>
+                <option value="VKontakte">VKontakte</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="WeChat">WeChat</option>
+              </select>
+              <label for="most_used_platform">Most Used Platform</label>
+              <span class="field-error" data-for="most_used_platform"></span>
+            </div>
+
+            <!-- Purpose of Use -->
+            <div class="field floating-field">
+              <select id="purpose_of_use" name="purpose_of_use" required>
+                <option value="" disabled selected hidden></option>
+                <option value="Networking">Networking</option>
+                <option value="Education">Education</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="News">News</option>
+              </select>
+              <label for="purpose_of_use">Purpose of Use</label>
+              <span class="field-error" data-for="purpose_of_use"></span>
+            </div>
+
+            <!-- Avg Daily Usage Hours: slider + number -->
+            <div class="field slider-field span-2">
+              <div class="slider-label-row">
+                <label for="avg_daily_usage_hours">Average Daily Usage Hours</label>
+                <div class="slider-number">
+                  <input type="number" id="avg_daily_usage_hours_num" min="6" max="24" step="0.1" value="6" />
+                  <span class="unit">hrs</span>
+                </div>
+              </div>
+              <input type="range" id="avg_daily_usage_hours" min="6" max="24" step="0.1" value="6" class="range-input" />
+              <div class="slider-scale"><span>6h</span><span>24h</span></div>
+              <span class="field-error" data-for="avg_daily_usage_hours"></span>
+            </div>
+
+            <!-- Daily Unlocks -->
+            <div class="field floating-field">
+              <input type="number" id="daily_unlocks" name="daily_unlocks" placeholder=" " min="0" required />
+              <label for="daily_unlocks">Daily Unlocks</label>
+              <span class="field-hint">Times phone is unlocked / day</span>
+              <span class="field-error" data-for="daily_unlocks"></span>
+            </div>
+
+            <!-- Stress level -->
+            <div class="field floating-field">
+              <select id="stress_level" name="stress_level" required>
+                <option value="" disabled selected hidden></option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Very High">Very High</option>
+              </select>
+              <label for="stress_level">Stress Level</label>
+              <span class="field-error" data-for="stress_level"></span>
+            </div>
+
+            <!-- Study Hours -->
+            <div class="field slider-field span-2">
+              <div class="slider-label-row">
+                <label for="study_hours">Study Hours / Day</label>
+                <div class="slider-number"><span class="slider-readout" id="study_hours_readout">0</span><span class="unit">hrs</span></div>
+              </div>
+              <input type="range" id="study_hours" min="0" max="24" step="0.5" value="0" class="range-input accent-blue" />
+              <div class="slider-scale"><span>0h</span><span>24h</span></div>
+            </div>
+
+            <!-- Physical Activity Hours -->
+            <div class="field slider-field span-2">
+              <div class="slider-label-row">
+                <label for="physical_activity_hours">Physical Activity Hours / Day</label>
+                <div class="slider-number"><span class="slider-readout" id="physical_activity_hours_readout">0</span><span class="unit">hrs</span></div>
+              </div>
+              <input type="range" id="physical_activity_hours" min="0" max="2" step="0.1" value="0" class="range-input accent-purple" />
+              <div class="slider-scale"><span>0h</span><span>2h</span></div>
+            </div>
+
+            <!-- Sleep Hours -->
+            <div class="field slider-field span-2">
+              <div class="slider-label-row">
+                <label for="sleep_hours_per_night">Sleep Hours / Night</label>
+                <div class="slider-number"><span class="slider-readout" id="sleep_hours_per_night_readout">0</span><span class="unit">hrs</span></div>
+              </div>
+              <input type="range" id="sleep_hours_per_night" min="0" max="24" step="0.5" value="0" class="range-input accent-cyan" />
+              <div class="slider-scale"><span>0h</span><span>24h</span></div>
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="resetBtn" class="btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 1 3 6.7" stroke-linecap="round"/><path d="M3 17v-5h5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Reset Form
+            </button>
+            <button type="submit" id="predictBtn" class="btn-primary btn-glow btn-large">
+              <span class="btn-label">Predict Score</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ RESULT ============ -->
+    <section class="result-section" id="result-section">
+      <div class="glass-card result-card" id="resultCard" hidden>
+        <div class="result-header">
+          <div class="success-icon" id="successIcon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h2>Prediction Complete</h2>
+            <p>Here's the model's estimate for this student profile.</p>
+          </div>
+        </div>
+
+        <div class="result-body">
+          <div class="circular-progress-wrap">
+            <svg viewBox="0 0 200 200" class="circular-progress">
+              <circle cx="100" cy="100" r="86" class="ring-track"/>
+              <circle cx="100" cy="100" r="86" class="ring-fill" id="ringFill"/>
+            </svg>
+            <div class="circular-progress-label">
+              <span class="score-number" id="scoreNumber">0</span>
+              <span class="score-out-of">/ 100</span>
+            </div>
+          </div>
+
+          <div class="result-details">
+            <p class="result-caption" id="resultCaption">—</p>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <p class="result-disclaimer">
+              This score is a statistical estimate from a machine-learning model, not a clinical diagnosis.
+              If you're concerned about your mental health, please talk to a qualified professional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ERROR TOAST ============ -->
+  <div class="error-toast" id="errorToast" role="alert" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9.5"/><path d="M12 7.5v6M12 16.5h.01" stroke-linecap="round"/></svg>
+    <span id="errorToastMessage">Something went wrong.</span>
+    <button id="errorToastClose" aria-label="Dismiss">&times;</button>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">Mindscope<span class="brand-name-accent">AI</span></span>
+        <p>A machine-learning dashboard for exploring the relationship between digital habits and mental well‑being.</p>
+      </div>
+      <div class="footer-meta">
+        <p>API endpoint: <code>127.0.0.1:2200</code></p>
+        <p>&copy; 2026 Mindscope AI — For educational purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
