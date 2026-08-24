@@ -1,0 +1,32 @@
+# Git
+.git
+.gitignore
+
+# Python virtual environment and bytecode
+.venv
+venv
+ENV
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Data and exploratory files
+*.csv
+*.ipynb
+.ipynb_checkpoints/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Documentation and guides not needed in image
+*.md
+DEPLOYMENT_GUIDE.md
+
+# Logs
+*.log

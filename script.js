@@ -6,8 +6,17 @@
 (function () {
   "use strict";
 
-  // API endpoint — must match the running FastAPI backend
-  const API_BASE = "http://127.0.0.1:2200";
+  // ==========================================================================
+  // API Configuration
+  // Local Dev: "http://127.0.0.1:7860" or "http://127.0.0.1:2200"
+  // Hugging Face Space: "https://<hf-username>-<hf-space-name>.hf.space"
+  // Example: "https://zaheerbalochtech-mental-health-score-predictor.hf.space"
+  // ==========================================================================
+  const API_BASE = window.API_BASE_URL || (
+    window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+      ? "http://127.0.0.1:7860"
+      : "https://zaheerbalochtech-mental-health-score-predictor.hf.space"
+  );
   const PREDICT_ENDPOINT = `${API_BASE}/predict`;
 
   /* ------------------------------------------------------------------ */
