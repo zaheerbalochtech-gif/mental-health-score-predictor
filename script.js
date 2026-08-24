@@ -9,13 +9,12 @@
   // ==========================================================================
   // API Configuration
   // Local Dev: "http://127.0.0.1:7860" or "http://127.0.0.1:2200"
-  // Hugging Face Space: "https://<hf-username>-<hf-space-name>.hf.space"
-  // Example: "https://zaheerbalochtech-mental-health-score-predictor.hf.space"
+  // Production Backend: Railway
   // ==========================================================================
   const API_BASE = window.API_BASE_URL || (
     window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
       ? "http://127.0.0.1:7860"
-      : "https://zaheerbalochtech-mental-health-score-predictor.hf.space"
+      : "https://mental-health-score-predictor-production.up.railway.app"
   );
   const PREDICT_ENDPOINT = `${API_BASE}/predict`;
 
